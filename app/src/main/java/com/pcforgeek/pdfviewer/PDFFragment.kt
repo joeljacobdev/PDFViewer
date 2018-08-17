@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import kotlinx.android.synthetic.main.fragment_pdf.*
 
 
 class PDFFragment : Fragment() {
+
+    val filePath = "https://www.tutorialspoint.com/android/android_tutorial.pdf"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +22,18 @@ class PDFFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_pdf, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        pdfWebView.settings.javaScriptEnabled = true
+        pdfWebView.loadUrl("http://docs.google.com/gview?embedded=true&url=$filePath")
+        pdfWebView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                progress_circular.visibility = View.GONE
+                super.onPageFinished(view, url)
+            }
+        }
+        super.onActivityCreated(savedInstanceState)
     }
 
 
