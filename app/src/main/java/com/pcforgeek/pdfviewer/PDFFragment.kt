@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.fragment_pdf.*
+import android.webkit.ConsoleMessage
+import android.webkit.WebChromeClient
 
 
 class PDFFragment : Fragment() {
 
-    val filePath = "https://www.tutorialspoint.com/android/android_tutorial.pdf"
+    private val filePath = "https://www.tutorialspoint.com/android/android_tutorial.pdf"
+    private val viewerPath = "https://pcforgeek.github.io/PDFViewer/web/viewer.html"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,7 @@ class PDFFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         pdfWebView.settings.javaScriptEnabled = true
-        pdfWebView.loadUrl("http://mozilla.github.io/pdf.js/web/viewer.html?file=$filePath")
+        pdfWebView.loadUrl("$viewerPath?file=$filePath")
         pdfWebView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 progress_circular.visibility = View.GONE
