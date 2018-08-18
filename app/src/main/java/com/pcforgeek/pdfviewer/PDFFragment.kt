@@ -26,7 +26,7 @@ class PDFFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         pdfWebView.settings.javaScriptEnabled = true
-        pdfWebView.loadUrl("http://docs.google.com/gview?embedded=true&url=$filePath")
+        pdfWebView.loadUrl("http://mozilla.github.io/pdf.js/web/viewer.html?file=$filePath")
         pdfWebView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 progress_circular.visibility = View.GONE
