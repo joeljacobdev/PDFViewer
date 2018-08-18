@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.fragment_pdf.*
-import android.webkit.ConsoleMessage
-import android.webkit.WebChromeClient
 
 
 class PDFFragment : Fragment() {
